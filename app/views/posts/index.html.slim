@@ -1,0 +1,17 @@
+.row-fluid
+  .span12
+    .span5
+    .span7
+      h2 All blogs
+  = render :partial => "post", :collection => @posts
+br/
+.row-fluid
+  .span11
+    .span6
+    .span5
+      = paginate @posts
+.row-fluid
+  .span12
+    .span3
+    .span6
+      = link_to 'Create New Blog', new_post_path, :class => "btn btn-success"

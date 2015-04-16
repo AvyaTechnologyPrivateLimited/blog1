@@ -1,0 +1,23 @@
+.row-fluid
+  .span12
+    .span4
+    .span8
+      h1 Editing blog
+      = form_for(:post, :url => post_path, :html => { :method => :put } )  do |f|
+
+        - if @post.errors.any?
+          #error_explanation
+            ul
+              - @post.errors.full_messages.each do |msg|
+                li = msg      
+          
+        .label_align
+          = f.label :title
+          = f.text_field :title, :class => "text_field_margin"
+        .label_align
+          = f.label :contents
+          = f.text_area :contents, :size => "30x15", :class => "text_area_margin"
+        .actions.btn_margin
+          = f.submit :class => "btn", class: "btn btn-success"
+          = link_to 'Show', post_path(@post), :class => "btn"
+          = link_to 'Back', posts_path, :class => "btn btn-primary"

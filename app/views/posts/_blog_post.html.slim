@@ -1,0 +1,20 @@
+#topic
+  #posts
+    a name="post-808" 
+    #post_1.post.odd
+      .user
+        .username
+          = link_to @post.user.username, "/users/\#{@post.user.id}/profile"
+        .icon
+          = get_user_thumb_image(@post.user)
+      .show_contents.contents
+        a href="#post-808" 
+          time datetime="" = @post.updated_at
+        p.blog_title
+          = @post.title
+          a.like_image class=("<%= custom_visible(@post) %>") href=("<%= post_like_unlike_on_comment_path(@post) %>") 
+            = image_tag(like_dislike_image_url(@post))
+          span = @post.post_like_count
+        .clearer
+        .content_margin
+          = @post.contents

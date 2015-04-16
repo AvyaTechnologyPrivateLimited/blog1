@@ -1,0 +1,4 @@
+$('.user_list').html("<%= escape_javascript(render :partial => '/users/user_list', :collection => @users)%>");
+<% if @users.blank? %>  
+  $('.user_list').html("<p class='result'> Result not found</p>");
+<% end %>

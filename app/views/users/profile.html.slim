@@ -1,0 +1,20 @@
+#topic
+  #posts.set_border
+    a name="post-808" 
+    #post_1.post.odd
+      .user
+        .icon
+          = get_user_thumb_image(@user)
+      .show_contents.contents
+        label.username = @user.full_name
+        = @user.email
+br/
+.clearer
+  - if @published_posts.blank?
+    #topic.no_comment_text
+      h3 There is no published blogs found
+  - else
+    br/
+    #topic.blog_title
+      h3 All Blogs
+      = render :partial => "/posts/post", :collection => @published_posts

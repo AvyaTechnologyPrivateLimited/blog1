@@ -1,0 +1,16 @@
+.blog
+  = render 'blog_post'
+.comment
+  - if @comments.blank?
+    #topic.no_comment_text
+      h3 There is no comments found
+    br/
+  - else
+    #topic.blog_title
+      h3 All Comments
+      = render :partial => "comment", :collection => @comments
+  
+  - if user_signed_in?
+    .comment_form
+      = render :partial => '/comments/form'
+| 

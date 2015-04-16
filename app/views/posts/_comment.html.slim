@@ -1,0 +1,24 @@
+div id=("comment_<%= comment.id %>") 
+  #topic
+    #posts.set_border
+      a name="post-808" 
+      #post_1.post.odd
+        .user
+          .username
+            = link_to comment.user.username, "/users/#{comment.user.id}/profile"
+          .icon
+            = get_user_thumb_image(comment.user)
+        .show_contents.contents
+          a href="#post-808" 
+            time datetime=""  = comment.created_at
+          p.title_text
+          .clearer
+          .content_margin
+            = comment.contents
+          ul.actions
+            - if can? :edit, comment
+              li
+                = link_to 'Edit', edit_blog_comment_path(comment.blog,comment), :remote => true
+              li
+                = link_to 'Destroy', blog_comment_path(comment.blog,comment), method: :delete, data: { confirm: 'Are you sure?' },:remote => true
+

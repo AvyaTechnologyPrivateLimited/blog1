@@ -1,0 +1,12 @@
+.row-fluid
+  .span12
+    .span5
+    .span7
+      span#search_box
+        input#search_options_container name="search" placeholder=("Find user by name") type="text" value="" /
+        input.search_auction_items src="/assets/store_search_btn.gif" type="image" /
+      h3 All Results
+      .user_list
+        = render :partial => '/users/user_list', :collection => @users
+        .pagination_margin 
+          = paginate @users

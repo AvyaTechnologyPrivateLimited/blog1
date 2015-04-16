@@ -1,0 +1,9 @@
+.row-fluide
+  .span12.row_padding
+    .span2
+      = get_user_thumb_image(user_list)
+    .span7
+      .username
+        = link_to user_list.full_name, "/users/#{user_list.id}/profile"
+    .span3
+      =link_to 'View Profile', "/users/#{user_list.id}/profile", :class => "btn"

@@ -1,0 +1,21 @@
+.navbar.navbar-fixed-top
+  .navbar-inner
+    .container
+      .nav-collapse.collapse
+        ul.nav.pull-right
+          li
+            = link_to 'Home', root_path, :class => "scroller"
+          - if current_user
+            li
+              = link_to 'Blog', posts_path, :class => "btn-header"
+            li
+              = link_to 'Setting', edit_user_registration_path,:class => "btn-header"
+            li
+              = link_to 'Profile', "/users/#{current_user.id}/profile",:class => "btn-header"
+            li
+              = link_to 'Log out', destroy_user_session_path, :method => :delete, :class => "btn-header"
+          - else
+            li
+              = link_to 'Sign in', new_user_session_path, :class => "btn-header"
+            li
+              = link_to 'Sign up', new_user_registration_path, :class => "btn-header"

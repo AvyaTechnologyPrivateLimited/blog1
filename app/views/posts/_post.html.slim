@@ -1,0 +1,30 @@
+#topic
+  #posts
+    a name="post-808" 
+    #post_1.post.odd
+      .user
+        .username
+          = link_to post.user.username, "/users/#{post.user.id}/profile"
+        .icon
+          = get_user_thumb_image(post.user)
+      .contents
+        time datetime=""  = post.updated_at
+        p
+          span.title_text Title: = post.title
+          a.like_image class=("<%= custom_visible(post) %>") href=("<%= post_like_unlike_path(post) %>") 
+            = image_tag(like_dislike_image_url(post))
+          post.post_like_count
+        p
+        .clearer
+        .content_margin
+          = post.contents
+        ul.actions
+          li 
+            = link_to 'Show', post_path(post)
+            - if post.is_owner?(current_user)
+              li 
+                = link_to 'Edit', edit_post_path(post)
+              li 
+                = link_to 'Destroy', post_path(post), :method => :delete, :data => {confirm: 'Are you sure?' }
+              li
+                = link_to 'Publish', post_publish_path(post) unless post.is_published

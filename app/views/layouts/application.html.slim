@@ -1,0 +1,21 @@
+doctype html
+html
+  head
+    title Blog
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    = render :partial => "layouts/header"
+    .margin_top
+      .message_div_margin
+        - if notice.present?
+          .alert_margin.alert.alert-success
+            a.close data-dismiss="alert"  ×
+            #flash_notice = notice
+        - elsif alert.present?
+          .alert.alert-error
+            a.close data-dismiss="alert"  ×
+            #flash_alert = alert
+          
+      = yield
